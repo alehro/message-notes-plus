@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://messagenotesplus/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay [
+<!ENTITY % overlayDTD SYSTEM "chrome://messagenotesplus/locale/overlay.dtd">
+%overlayDTD;
+<!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd">
+%messengercomposeDTD;
+]>
+<overlay id="messagenotesplus-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		
+	<script src="baseServerProxy.js" />
+	<script src="localProxy.js" />		
+	<script src="free/serverProxy.js"/>
+	<script src="commercial/serverProxy.js"/>
+	<script src="overlay.js" />
+<!-- 	<script data-main="testing/testOverlay" src="require.js"></script>	 -->
+	${testing-js} 
+
+
+	<script type="application/x-javascript" src="chrome://global/content/findBar.js" />
+
+
+	<toolbarpalette id="header-view-toolbar-palette">
+	<toolbarbutton id="messagenotesplusToggleButton" label="Show Notes" removable="true"  class="toolbarbutton-1 msgHeaderView-button messagenotesplusButtonBoxGrey"
+ 		oncommand="messagenotesplus.pUA('togglemessagenotesplus')" />
+ 	<toolbarbutton id="messagenotesplusDeleteButton" label="Delete Note" removable="true"  class="toolbarbutton-1 msgHeaderView-button messagenotesplusDeleteButtonBoxGrey"
+ 		oncommand="messagenotesplus.pUA('deleteNote')" />
+ 		${testing-xul}
+ 	
+	</toolbarpalette>
+
+	<hbox id="expandedHeadersBottomBox">
+		<!-- <grid id="expandedHeaders2"> -->
+		<!-- <columns id="expandedHeader2Columns"> -->
+		<!-- <column id="expandedHeaders2ValueColumn"> -->
+		<box align="center">
+		<image id="messagenotesplusNoteIndicator" src="chrome://messagenotesplus/skin/note_icon.png"
+			width="40" height="40" hidden="true" />
+		</box>
+
+		<!-- </column> -->
+		<!-- </columns> -->
+		<!-- </grid> -->
+	</hbox>
+	<menupopup id="mailContext">
+		<!-- <menuseparator /> -->
+		<menu label="Notes">				
+			<menupopup>
+
+<menuitem label="Important" oncommand="messagenotesplus.pUA('setNoteStatus',2);" 
+	mnpId="SetNoteStatus2" mnpDefHotKey="" />
+<menuitem label="Needs attention" oncommand="messagenotesplus.pUA('setNoteStatus',1);"
+	mnpId="SetNoteStatus1" mnpDefHotKey=""  />
+<menuitem label="Normal" oncommand="messagenotesplus.pUA('setNoteStatus',0);" 
+	mnpId="SetNoteStatus0" mnpDefHotKey="" />
+
+<menuseparator />
+<menuitem label="Show/Hide Note"
+	oncommand="messagenotesplus.pUA('togglemessagenotesplus');" mnpId="ShowHideNote"
+	mnpDefHotKey="DOM_VK_F9,shift" />
+<menuitem label="Add Note" oncommand="messagenotesplus.pUA('addNote');"
+	mnpId="AddNote" mnpDefHotKey="DOM_VK_F9,control" />
+<menuitem label="Share Note Changes" oncommand="messagenotesplus.pUA('shareNote');"
+	 mnpId="ShareNoteChanges" mnpDefHotKey="DOM_VK_F9,control,shift" />
+<menuitem label="Cancel Note Local Changes" oncommand="messagenotesplus.pUA('cancelChanges');"
+	 mnpId="CancelNoteLocalChanges" mnpDefHotKey="DOM_VK_F11,control,shift" />
+<menuseparator />			
+<menuitem label="Delete note" oncommand="messagenotesplus.pUA('deleteNote');"
+	mnpId = "DeleteNote" mnpDefHotKey="DOM_VK_F12,control,shift" />
+<menuseparator />
+<menuitem label="Search" 
+	oncommand="messagenotesplus.pUA('searchForNotesWithText');" mnpId="Search"
+	mnpDefHotKey="DOM_VK_F3,control" />
+<menuseparator />
+<menuitem label="Memorize Note" 
+	oncommand="messagenotesplus.pUA('memorizeNoteFromThisMessage');" mnpId="Memorize"
+	mnpDefHotKey="" />
+<menuitem label="Add Memorized Note" 
+	oncommand="messagenotesplus.pUA('addMemorized');" mnpId="AddMemorized"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Print..." 
+	oncommand="messagenotesplus.pUA('openPrint');" mnpId="Print"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Options" 
+oncommand="openDialog('chrome://messagenotesplus/content/options.xul', null, 'resizable=yes,scrollbars=yes,status=yes,modal=yes,centerscreen');"/>			
+<menuitem label="Help" oncommand="messagenotesplus.pUA('showHelp');" />
+	</menupopup>			
+		</menu>
+	</menupopup>
+
+
+	<vbox id="messagepanebox" persist="collapsed">
+		<splitter id="messagenotesplus-splitter" collapse="before"
+			persist="collapsed,state">
+			<observes element="messagenotesplusBox" attribute="hidden" />
+		</splitter>
+		<vbox id="messagenotesplusBox" persist="height,hidden" style="height: 100%;"
+			hidden="true" onclick="messagenotesplus.pUA('onClickBox',event);"
+			onkeypress="messagenotesplus.pUA('onKeypress',event);">
+			
+		
+			<hbox flex="1" id="messagenotesplusSubBox" >
+						
+					<menupopup id="messagenotesplusNoteCMenu">
+
+<menuitem label="Important" oncommand="messagenotesplus.pUA('setNoteStatus',2);" 
+	mnpId="SetNoteStatus2" mnpDefHotKey="" />
+<menuitem label="Needs attention" oncommand="messagenotesplus.pUA('setNoteStatus',1);"
+	mnpId="SetNoteStatus1" mnpDefHotKey=""  />
+<menuitem label="Normal" oncommand="messagenotesplus.pUA('setNoteStatus',0);" 
+	mnpId="SetNoteStatus0" mnpDefHotKey="" />
+
+<menuseparator />
+<menuitem label="Show/Hide Note"
+	oncommand="messagenotesplus.pUA('togglemessagenotesplus');" mnpId="ShowHideNote"
+	mnpDefHotKey="DOM_VK_F9,shift" />
+<menuitem label="Add Note" oncommand="messagenotesplus.pUA('addNote');"
+	mnpId="AddNote" mnpDefHotKey="DOM_VK_F9,control" />
+<menuitem label="Share Note Changes" oncommand="messagenotesplus.pUA('shareNote');"
+	 mnpId="ShareNoteChanges" mnpDefHotKey="DOM_VK_F9,control,shift" />
+<menuitem label="Cancel Note Local Changes" oncommand="messagenotesplus.pUA('cancelChanges');"
+	 mnpId="CancelNoteLocalChanges" mnpDefHotKey="DOM_VK_F11,control,shift" />
+<menuseparator />			
+<menuitem label="Delete note" oncommand="messagenotesplus.pUA('deleteNote');"
+	mnpId = "DeleteNote" mnpDefHotKey="DOM_VK_F12,control,shift" />
+<menuseparator />
+<menuitem label="Search" 
+	oncommand="messagenotesplus.pUA('searchForNotesWithText');" mnpId="Search"
+	mnpDefHotKey="DOM_VK_F3,control" />
+<menuseparator />
+<menuitem label="Memorize Note" 
+	oncommand="messagenotesplus.pUA('memorizeNoteFromThisMessage');" mnpId="Memorize"
+	mnpDefHotKey="" />
+<menuitem label="Add Memorized Note" 
+	oncommand="messagenotesplus.pUA('addMemorized');" mnpId="AddMemorized"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Print..." 
+	oncommand="messagenotesplus.pUA('openPrint');" mnpId="Print"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Options" 
+oncommand="openDialog('chrome://messagenotesplus/content/options.xul', null, 'resizable=yes,scrollbars=yes,status=yes,modal=yes,centerscreen');"/>			
+<menuitem label="Help" oncommand="messagenotesplus.pUA('showHelp');" />
+	</menupopup>
+				
+				<tooltip id="messagenotesplusTooltip">
+				  <label id="messagenotesplusTooltipLabel" />
+				</tooltip>
+
+
+				<iframe id="MessageNotesPlus_msgText" style="height: 100%;overflow:auto; " 
+				src="chrome://messagenotesplus/content/notes.html" flex="1"  />
+			</hbox>
+
+		</vbox>
+	</vbox>
+
+
+
+</overlay>

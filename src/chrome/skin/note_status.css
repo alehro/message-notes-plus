@@ -1,0 +1,7 @@
+/*#noteStatus{*/
+.note_status_class    {
+/*treechildren::-moz-tree-column{*/
+/*   large icons are only needed for customization dialog, so use here also small icons
+  list-style-image: url("chrome://messenger/skin/icons/symbolic-forward.png");*/
+ list-style-image: url("chrome://messagenotesplus/skin/note_status_column.png");
+}

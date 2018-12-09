@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://messagenotesplus/locale/options.dtd">
+
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept, cancel" persist="screenX screenY" title="Message Notes Plus Settings"
+	onload="messagenotesplusOptions.init();" ondialogaccept="messagenotesplusOptions.savePrefs();"
+	style="width:40em;max-width:40em;">
+
+
+	<script src="free/optionsPlus.js"/>
+	<script src="commercial/optionsPlus.js"/>
+	<script src="options.js" />
+	
+	<tabbox id="myTabList" selectedIndex="0">
+  <tabs id="optionTabs">    
+    <tab label="Miscellanous"/>
+    <tab label="Hotkeys"/>
+    <tab label="Icons"/>    
+	<tab id ='credentialsTab' label="Credentials" hidden="true"/>
+  </tabs>
+  <tabpanels>
+  	    
+	<tabpanel orient="vertical"  align="left"  ordinal='0'>
+    <box hidden="true">
+    	<checkbox id="MNmultiUser" label="Multi-User" checked="true"
+			prefstring="multiUser" defaultpref="true" />
+		<vbox><image src='chrome://messagenotesplus/skin/question16.png' style="margin-top:6px" 
+			tooltiptext='Enable/Disable Multiuser-User version features. Option change requires Thunderbird restart.'/>
+		</vbox>
+	</box>
+<!-- 	<checkbox id="MNdistinguishIcons" label="Distinguish icons of notes which have unread or unshared changes (Requires Thunderbird restart)" checked="true" -->
+<!-- 		prefstring="tagNotes" defaultpref="true" tooltiptext=''/> -->
+    <checkbox id="MNtagNotes" label="Tag Messages which have Notes with 'mnp-note'" checked="true"
+		prefstring="tagNotes" defaultpref="true" />
+	
+	
+	<label id='maxPanelHeightLabel' value='Maximum allowed MNP panel height:'/>
+	<box>
+		<textbox id='MNmaxPanelHeight'  prefstring="maxPanelHeight" 
+			defaultpref='250' />
+		<vbox><image src='chrome://messagenotesplus/skin/question16.png' style="margin-top:6px" 
+			tooltiptext='The MNP panel autosizes automatically, but we need to limit it, otherwise for large notes the crazy thing can hide our email completely.'/>
+		</vbox>
+	</box>
+    <groupbox>
+		<caption label="Show Message Notes" />
+		<radiogroup id="MNshow" prefstring="ShowNoteBox"
+			defaultpref="ifnote">			
+			<radio id="never" label="Never" value="never" />
+			<radio id="ifnote" label="If message has notes" value="ifnote" />			
+		</radiogroup>
+	</groupbox>
+	<checkbox id="MNdebug" label="Debug Message Notes" checked="false"
+		prefstring="debug" defaultpref="false" />
+
+	
+
+	<label id='serverTimeoutLabel' value='Server timeout (seconds):' hidden="true"/>
+	<textbox id='MNServerTimeout'  hidden="true" prefstring="servertimeout" 
+		defaultpref='60' />
+	<checkbox id="MNDoNotBlock"
+		label="Do not show popups. Log to Error Console. " checked="true"
+		prefstring="donotblock" defaultpref="true" />
+	
+<!-- 	<button label="Import..." hidden="true" -->
+<!-- 			onclick="openDialog('chrome://messagenotesplus/content/commercial/import.xul', null,  'modal=yes,resizable=yes,scrollbars=yes,status=yes,centerscreen');" /> -->
+	
+	
+	</tabpanel>
+    <tabpanel orient="vertical"  align="left"  ordinal='1'>
+    <groupbox>
+		<caption label="Customize Key Bindings" />
+		<grid>
+  <columns>
+    <column flex='0' />
+    <column flex='1' />
+    <column flex='0' />
+    <column flex='1' />
+  </columns>
+  <rows>
+    <row>
+      <label value='Important: '></label>
+      <textbox id='MNPSetNoteStatus2KeyModTextBox' prefstring='SetNoteStatus2KeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPSetNoteStatus2KeyTextBox' prefstring='SetNoteStatus2Key'></textbox>
+    </row>
+    <row>
+      <label value='Needs attention: '></label>
+      <textbox id='MNPSetNoteStatus1KeyModTextBox' prefstring='SetNoteStatus1KeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPSetNoteStatus1KeyTextBox' prefstring='SetNoteStatus1Key'></textbox>
+    </row>
+    <row>
+      <label value='Normal: '></label>
+      <textbox id='MNPSetNoteStatus0KeyModTextBox' prefstring='SetNoteStatus0KeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPSetNoteStatus0KeyTextBox' prefstring='SetNoteStatus0Key'></textbox>
+    </row>
+    <row>
+      <label value='Show/Hide Note: '></label>
+      <textbox id='MNPShowHideNoteKeyModTextBox' prefstring='ShowHideNoteKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPShowHideNoteKeyTextBox' prefstring='ShowHideNoteKey'></textbox>
+    </row>
+    <row>
+      <label value='Add Note: '></label>
+      <textbox id='MNPAddNoteKeyModTextBox' prefstring='AddNoteKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPAddNoteKeyTextBox' prefstring='AddNoteKey'></textbox>
+    </row>
+    <row>
+      <label value='Share Note Changes: '></label>
+      <textbox id='MNPShareNoteChangesKeyModTextBox' prefstring='ShareNoteChangesKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPShareNoteChangesKeyTextBox' prefstring='ShareNoteChangesKey'></textbox>
+    </row>
+    <row>
+      <label value='Cancel Note Local Changes: '></label>
+      <textbox id='MNPCancelNoteLocalChangesKeyModTextBox' prefstring='CancelNoteLocalChangesKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPCancelNoteLocalChangesKeyTextBox' prefstring='CancelNoteLocalChangesKey'></textbox>
+    </row>
+    <row>
+      <label value='Delete note: '></label>
+      <textbox id='MNPDeleteNoteKeyModTextBox' prefstring='DeleteNoteKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPDeleteNoteKeyTextBox' prefstring='DeleteNoteKey'></textbox>
+    </row>
+    <row>
+      <label value='Search: '></label>
+      <textbox id='MNPSearchKeyModTextBox' prefstring='SearchKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPSearchKeyTextBox' prefstring='SearchKey'></textbox>
+    </row>
+    <row>
+      <label value='Memorize Note: '></label>
+      <textbox id='MNPMemorizeKeyModTextBox' prefstring='MemorizeKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPMemorizeKeyTextBox' prefstring='MemorizeKey'></textbox>
+    </row>
+    <row>
+      <label value='Add Memorized Note: '></label>
+      <textbox id='MNPAddMemorizedKeyModTextBox' prefstring='AddMemorizedKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPAddMemorizedKeyTextBox' prefstring='AddMemorizedKey'></textbox>
+    </row>
+    <row>
+      <label value='Print...: '></label>
+      <textbox id='MNPPrintKeyModTextBox' prefstring='PrintKeyMod'></textbox>
+      <label value='+'></label>
+      <textbox id='MNPPrintKeyTextBox' prefstring='PrintKey'></textbox>
+    </row>
+  </rows>
+</grid>
+		<box>
+		<button label="Help" onclick="alert('You may choose any keybord combination.\n First text box may contain any combination of:  &quot;control&quot;, &quot;shift&quot;, &quot;alt&quot;, &quot;meta&quot; keys.\n Second text box is for other keyboard key codes.\n All available key codes you may find here: https://developer.mozilla.org/en/DOM/KeyboardEvent\n'+
+			'But be careful. The hotkey you choose may interfere with already existing hotkey of Thunderbird or of other extension.\n In most cases it will cause double effect. \nI just warned you.')"/>
+		</box>		
+	</groupbox>
+	</tabpanel>
+    <tabpanel orient="vertical"  align="left"  ordinal='2'>
+    
+    <p>Here you can customize icons. The recommended way of doing this:</p>
+	<p> - Copy the directory with default icons to some other place. </p>
+	<p> - Edit the icon files using your favorite image editor. </p>
+	<p> - Click 'Apply custom icons' button. </p>
+	<label/>
+    <box align="left"><label value="Default icons folder path: "/>
+	<textbox id="defaultIconsFolderPath"  style="width:300px" readonly="true"/>	</box>
+    <box align="left"><label value="Custom icons folder path: "/>
+	<textbox id="customIconsFolderPath"  style="width:300px"/>	<button label="Select folder..."
+			onclick="messagenotesplusOptions.selectIconsFolder()" /></box>   
+	<label value="* If you change any of custom icons files after the folder path is specified you may need"/>
+	<label value="   to restart the Thunderbird to get the changes applied."/>
+	<label value="* Custom images should have the same size as default."/>
+	<button label="Apply custom icons"
+			onclick="messagenotesplusOptions.applyIcons()" />
+			
+    </tabpanel>
+    
+  </tabpanels>
+</tabbox>		
+</dialog>

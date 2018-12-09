@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://messagenotesplus/locale/options.dtd">
+
+<window id="yourwindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+xmlns:html="http://www.w3.org/1999/xhtml" xmlns:h="http://www.w3.org/1999/xhtml"
+style="width:1100px;height:auto;"
+title="Print message whith note">
+
+<script src="print.js" />
+<hbox><button id="printButton" label="Print"
+			onclick="printWindow.print()" /></hbox>
+<!-- <iframe id = "emailContent" flex = '2' style="width:1100px;height:600px; backgroundColor : FFFFFF;" src='imap://bendugintest%40gmail%2Ecom@imap.googlemail.com:993/fetch%3EUID%3E/INBOX%3E94'/> -->
+<iframe id = "emailContent" flex = '2' style="width:1100px;height:600px; backgroundColor : FFFFFF;"
+onLoad="printWindow.emailPostLoad()" src=""/>
+<iframe id="MessageNotesPlus_msgText"  style="height:0px;"
+				src="chrome://messagenotesplus/content/notes.html"  />
+
+</window>

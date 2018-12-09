@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
+
+  <!-- list all the packages being supplied -->
+  <RDF:Seq about="urn:mozilla:package:root">
+    <RDF:li resource="urn:mozilla:package:messagenotesplus"/>
+  </RDF:Seq>
+
+  <!-- package information -->
+  <RDF:Description about="urn:mozilla:package:messagenotesplus"
+                   chrome:name="messagenotesplus"
+                   chrome:displayName="messagenotesplus"
+                   chrome:author="alehro"
+                   chrome:extension="true"
+                   chrome:description="Message Notes Plus allows to add notes to emails.."
+                   chrome:settingsURL="chrome://messagenotesplus/content/options.xul">
+  </RDF:Description>
+
+  <!-- overlay information -->
+<RDF:Seq about="urn:mozilla:overlays">
+      <RDF:li resource="chrome://messenger/content/mailWindowOverlay.xul"/>
+   </RDF:Seq>
+
+   <RDF:Seq about="chrome://messenger/content/mailWindowOverlay.xul">
+     <RDF:li>chrome://messagenotesplus/content/overlay.xul</RDF:li>
+   </RDF:Seq>
+
+
+</RDF:RDF>

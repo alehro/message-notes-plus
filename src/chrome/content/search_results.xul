@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://messagenotesplus/locale/options.dtd">
+
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept"
+	persist="screenX screenY"
+	title="Message Notes Plus Search Results"
+ 	onload="messagenotesplusSearchResults.init();"  	
+ 	style="width:1100px;height:auto;">
+
+	<script type="application/x-javascript" src="search_results.js"/>
+<!--   scrolling tips see at:    http://www.cmiss.org/cmgui/zinc/ScrollingXulWindows/ -->
+	<grid  style="background-color: white; overflow:auto " flex="1">
+		<columns><column style="border: #000000 solid 1px;"/><column  style="border: #000000 solid 1px;" /><column/><column  style="border: #000000 solid 1px;" /></columns>
+		
+		<rows id="grid_rows">
+		<row style=" background-color: #dddddd; border-bottom: #000000 solid 1px; "><label value='Subject' /><label value='From' /><label value='Date' />
+		</row> 
+<!-- 		<row id="iconRow0" style="background-color:white"><box align="center"><label value=".PNG(12x12)"/><image src="chrome://messagenotesplus/skin/note_status_green.png"   /></box> -->
+<!-- 		<textbox id="customIconPath0" /><label id = "l_id" value="Some link" class="text-link"/>	 -->
+<!-- 		</row >	 -->
+		</rows>
+	</grid>
+	
+</dialog>

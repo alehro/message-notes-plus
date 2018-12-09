@@ -1,0 +1,42 @@
+
+
+<menuitem label="Important" oncommand="messagenotesplus.pUA('setNoteStatus',2);" 
+	mnpId="SetNoteStatus2" mnpDefHotKey="" />
+<menuitem label="Needs attention" oncommand="messagenotesplus.pUA('setNoteStatus',1);"
+	mnpId="SetNoteStatus1" mnpDefHotKey=""  />
+<menuitem label="Normal" oncommand="messagenotesplus.pUA('setNoteStatus',0);" 
+	mnpId="SetNoteStatus0" mnpDefHotKey="" />
+
+<menuseparator />
+<menuitem label="Show/Hide Note"
+	oncommand="messagenotesplus.pUA('togglemessagenotesplus');" mnpId="ShowHideNote"
+	mnpDefHotKey="DOM_VK_F9,shift" />
+<menuitem label="Add Note" oncommand="messagenotesplus.pUA('addNote');"
+	mnpId="AddNote" mnpDefHotKey="DOM_VK_F9,control" />
+<menuitem label="Share Note Changes" oncommand="messagenotesplus.pUA('shareNote');"
+	 mnpId="ShareNoteChanges" mnpDefHotKey="DOM_VK_F9,control,shift" />
+<menuitem label="Cancel Note Local Changes" oncommand="messagenotesplus.pUA('cancelChanges');"
+	 mnpId="CancelNoteLocalChanges" mnpDefHotKey="DOM_VK_F11,control,shift" />
+<menuseparator />			
+<menuitem label="Delete note" oncommand="messagenotesplus.pUA('deleteNote');"
+	mnpId = "DeleteNote" mnpDefHotKey="DOM_VK_F12,control,shift" />
+<menuseparator />
+<menuitem label="Search" 
+	oncommand="messagenotesplus.pUA('searchForNotesWithText');" mnpId="Search"
+	mnpDefHotKey="DOM_VK_F3,control" />
+<menuseparator />
+<menuitem label="Memorize Note" 
+	oncommand="messagenotesplus.pUA('memorizeNoteFromThisMessage');" mnpId="Memorize"
+	mnpDefHotKey="" />
+<menuitem label="Add Memorized Note" 
+	oncommand="messagenotesplus.pUA('addMemorized');" mnpId="AddMemorized"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Print..." 
+	oncommand="messagenotesplus.pUA('openPrint');" mnpId="Print"
+	mnpDefHotKey="" />
+<menuseparator />		
+<menuitem label="Options" 
+oncommand="openDialog('chrome://messagenotesplus/content/options.xul', null, 'resizable=yes,scrollbars=yes,status=yes,modal=yes,centerscreen');"/>			
+<menuitem label="Help" oncommand="messagenotesplus.pUA('showHelp');" />
+	

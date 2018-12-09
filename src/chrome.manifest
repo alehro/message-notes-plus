@@ -1,0 +1,14 @@
+content messagenotesplus                                          jar:chrome/messagenotesplus.jar!/content/
+resource msgmodules                         components/ 
+
+skin        messagenotesplus        classic/1.0                  jar:chrome/messagenotesplus.jar!/skin/
+
+locale        messagenotesplus        en-US                      jar:chrome/messagenotesplus.jar!/locale/en-US/
+
+style        chrome://global/content/customizeToolbar.xul         chrome://messagenotesplus/skin/overlay.css
+
+
+overlay chrome://messenger/content/messenger.xul chrome://messagenotesplus/content/note_status_overlay.xul
+overlay        chrome://messenger/content/mailWindowOverlay.xul         chrome://messagenotesplus/content/overlay.xul
+
+

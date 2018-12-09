@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://messagenotesplus/skin/note_status.css" type="text/css"?>
+<!--<!DOCTYPE overlay SYSTEM "chrome://helloword/locale/helloword.dtd">-->
+
+<overlay id="note_status-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+     <script src="note_status_overlay.js"/>
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="MessageNotesPlus_noteStatus" persist="hidden ordinal width"
+    fixed="true" width="12"
+           flex="1" label="Note status"
+           tooltiptext="Message note status"
+           class="treecol-image note_status_class"/>
+    </treecols>
+<!--      <treecol id="MessageNotesPlus_noteStatus" persist="hidden ordinal width" -->
+<!--     fixed="true" width="12" -->
+<!--            currentView="unthreaded" flex="2" label="Note status" -->
+<!--            tooltiptext="message's notes status" -->
+<!--            class="treecol-image note_status_class"/> -->
+<!--     </treecols> -->
+  </tree>  
+</overlay>

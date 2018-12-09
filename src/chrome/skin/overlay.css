@@ -1,0 +1,18 @@
+/* This is just an example. You shouldn't do this. */
+menuitem#mnu_messagenotesplus {
+  color: red !important;
+}
+.messagenotesplusIconButton-skin {
+  /* large icons are only needed for customization dialog, so use here also small icons */
+ /* list-style-image: url("chrome://messenger/skin/icons/symbolic-forward.png");*/
+ list-style-image: url("chrome://messagenotesplus/skin/note_icon.png");
+}
+.messagenotesplusButtonBox {
+	list-style-image: url("chrome://messagenotesplus/skin/note_icon.png");
+} 
+.messagenotesplusButtonBoxGrey {
+	list-style-image: url("chrome://messagenotesplus/skin/note_icon_grey.png");
+}
+.messagenotesplusDeleteButtonBoxGrey {
+	list-style-image: url("chrome://messagenotesplus/skin/note_icon_delete.png");
+} 
